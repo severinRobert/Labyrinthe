@@ -1,7 +1,7 @@
 ''''''
 from labyrinthe import Labyrinthe
 from os import system
-
+# test
 # initialisation  des variables globales
 lab1 = Labyrinthe(["##########",
                    "#        #",
