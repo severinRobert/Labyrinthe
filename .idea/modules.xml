@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/pythonProjectLabyrinthe.iml" filepath="$PROJECT_DIR$/.idea/pythonProjectLabyrinthe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pythonTPproject/.idea/pythonTPproject.iml" filepath="$PROJECT_DIR$/../pythonTPproject/.idea/pythonTPproject.iml" />
+    </modules>
+  </component>
+</project>
