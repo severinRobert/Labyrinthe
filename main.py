@@ -1,6 +1,6 @@
-''''''
-from labyrinthe import Labyrinthe
+from time import sleep
 from os import system
+from labyrinthe import Labyrinthe
 # test
 # initialisation  des variables globales
 lab1 = Labyrinthe(["##########",
