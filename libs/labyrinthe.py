@@ -1,5 +1,3 @@
-# Création des classes, methodes et fonctions
-
 
 class Labyrinthe:
 
@@ -34,6 +32,4 @@ class Labyrinthe:
             return str + r
         return str[:index] + r + str[index + 1:]
 
-    def affichage(self, lab):  # imprime le lab
-        for ligne in lab:  # verifier si je dois mettre self ?
-            print(ligne)
+

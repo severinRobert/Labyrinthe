@@ -69,7 +69,6 @@ def rng_lab(labyrinthe):
             stack.append(nouveau_point[0])
             chemin.append(nouveau_point[0])
             chemin.append(nouveau_point[1])
-            print(nouveau_point)
             point = list(nouveau_point[0])
     # on remplace toutes les coordonnées dans chemin par des espace
     for i in chemin:
