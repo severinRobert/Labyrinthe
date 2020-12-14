@@ -2,12 +2,10 @@ from time import sleep
 
 class Personnage:
 
-    def __init__(self, depart = [2, 8], arrivee = [4, 9]):
-        self.depart = depart
-        self.arrivee = arrivee
+    def __init__(self):
+        pass
 
-
-    def deplacement(self, lab, direction, coord, labVisible):
+    def deplacement(self, lab, direction, coord, lab_visible):
         gauche = "q"
         droite = "d"
         haut = "z"
@@ -25,12 +23,10 @@ class Personnage:
             print("commande non reconnue")
             sleep(1)
         if lab.lab[coord[0]][coord[1]] == "#":  # SI ON RENCONTRE UN MUR
-            labVisible[coord[0]] = lab.remplacer(labVisible[coord[0]], coord[1], lab.mur)
-            coord[0] = self.depart[0]
-            coord[1] = self.depart[1]
+            lab_visible[coord[0]] = lab.remplacer(lab_visible[coord[0]], coord[1], lab.mur)
+            print(coord)
+            coord = lab.depart
+            print(coord)
             print("VOUS ÊTES MORT, RETOUR AU POINT DE DÉPART")
             sleep(1)
-        if coord == self.arrivee:  # SI ON EST ARRIVÉ À LA SORTIE
-            return True
-
-        labVisible[self.arrivee[0]] = lab.remplacer(labVisible[self.arrivee[0]], self.arrivee[1], lab.vide)
+        return coord
