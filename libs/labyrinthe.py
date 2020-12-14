@@ -3,26 +3,29 @@
 
 class Labyrinthe:
 
-    def __init__(self, lab = [], taille=10, personnage="x", mur="#", vide="-", mort=0):
+    def __init__(self, lab, taille, depart, arrivee, personnage="x", mur="#", vide="-", mort=0):
         self.lab = lab
         self.taille = taille
         self.personnage = personnage
         self.mur = mur
         self.vide = vide
         self.mort = mort
+        self.depart = depart
+        self.arrivee = arrivee
 
     @property
     def creation_lab(self):
 
         murEntier = self.mur * self.taille
         ligneVide = self.mur + self.vide * (self.taille - 2) + self.mur
-        labVisible = []
+        lab_visible = []
         for i in range(self.taille):
-            if i == 0 or i == 9:
-                labVisible.append(murEntier)
+            if i == 0 or i == self.taille-1:
+                lab_visible.append(murEntier)
             else:
-                labVisible.append(ligneVide)
-        return labVisible
+                lab_visible.append(ligneVide)
+        lab_visible[self.arrivee[0]] = self.remplacer(lab_visible[self.arrivee[0]],self.arrivee[1],self.vide)
+        return lab_visible
 
     def remplacer(self, str, index, r):
         if index < 0:  # ajout au début
