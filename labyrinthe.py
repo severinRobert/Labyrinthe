@@ -1,6 +1,6 @@
 # Création des classes, methodes et fonctions
 
-# test n2
+
 class Labyrinthe:
 
     def __init__(self, lab = [], taille=10, personnage="x", mur="#", vide="-", mort=0):
