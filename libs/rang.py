@@ -31,9 +31,7 @@ def rng_lab(labyrinthe):
 
     choix_sortie = [bords[i] for i, bord in enumerate(bords) if (bords[i][0] % 2 == 1 or bords[i][1] % 2 == 1) and
                     bords[i] not in sortie_interdite]
-    print(choix_sortie)
     sortie = r.choice(choix_sortie)
-    print(sortie)
     pointRef = list(sortie)
     if sortie[0] == taille - 1:
         pointRef[0] -= 1
@@ -44,6 +42,7 @@ def rng_lab(labyrinthe):
     elif sortie[1] == 0:
         pointRef[1] += 1
 
+    premier_cul_de_sac = False
     chemin = [sortie, pointRef]
     point = list(pointRef)
     nb_visite_max = ((taille - 1) / 2) ** 2
@@ -62,6 +61,7 @@ def rng_lab(labyrinthe):
         if choix_suite == []:
             stack.pop()
             point = list(stack[-1])
+            depart = depart if premier_cul_de_sac else point
         # sinon on choisit un point au hazard dans les choix possible
         else:
             nouveau_point = r.choice(choix_suite)

@@ -2,10 +2,9 @@ from time import sleep
 
 class Personnage:
 
-    def __init__(self):
-        pass
 
-    def deplacement(self, lab, direction, coord, lab_visible,gui):
+
+    def deplacement(self, lab, direction, coord, lab_visible):
         gauche = "q"
         droite = "d"
         haut = "z"
@@ -25,6 +24,6 @@ class Personnage:
         if lab.lab[coord[0]][coord[1]] == "#":  # SI ON RENCONTRE UN MUR
             lab_visible[coord[0]] = lab.remplacer(lab_visible[coord[0]], coord[1], lab.mur)
             coord = list(lab.depart)
-            gui.print_texte("VOUS ÊTES MORT, RETOUR AU POINT DE DÉPART")
-            sleep(1)
+            print("VOUS ÊTES MORT, RETOUR AU POINT DE DÉPART")
+            sleep(0.5)
         return coord

@@ -32,4 +32,6 @@ class Labyrinthe:
             return str + r
         return str[:index] + r + str[index + 1:]
 
-
+    def affichage(self,lab):
+        for ligne in lab:
+            print(ligne)

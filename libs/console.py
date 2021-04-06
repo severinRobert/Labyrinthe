@@ -1,10 +1,20 @@
-class Console():
-    def affichage(self, lab):  # imprime le lab
-        for ligne in lab:
-            print(ligne)
+from libs.labyrinthe import Labyrinthe
 
-    def print_texte(self,texte):
-        print(texte)
 
-    def input(self,texte):
-        return input(texte)
+def jeu_console(joueur,lab):
+    continuer = True
+    coord = list(lab.depart)
+    lab_visible = Labyrinthe.creation_lab.__get__(lab)
+    while continuer:
+        # place le joueur aux coordonnées actuelles
+        lab_visible[coord[0]] = lab.remplacer(lab_visible[coord[0]], coord[1], lab.personnage)
+        lab.affichage(lab_visible)  # on affiche le labyrinthe
+        ancienneC = list(coord)  # on stock l'ancienne coordonnée
+        direction = input("direction : ")  # choix de la direction
+        # on change les nouvelles coordonnées du joueur et on vérifie les cas exceptionnels
+        coord = joueur.deplacement(lab, direction, coord, lab_visible)
+        if coord == lab.arrivee:
+            print("VOUS AVEZ GAGNÉ !!")
+            continuer = False
+        # supprime le "x" de l'ancienne position du joueur
+        lab_visible[ancienneC[0]] = lab.remplacer(lab_visible[ancienneC[0]], ancienneC[1], lab.vide)
