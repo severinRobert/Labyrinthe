@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, math
 from libs.rang import rng_lab
 from libs.labyrinthe import Labyrinthe
 
@@ -23,7 +23,7 @@ def jeu_gui(x: int, y: int, lab, joueur):
     pygame.init()
     screen = pygame.display.set_mode((x, y))
     clock = pygame.time.Clock()
-    carre = round(y/len(lab.lab))
+    carre = math.floor(y/len(lab.lab))
 
     # titre et icon
     pygame.display.set_caption("Labyrinthe")
@@ -31,7 +31,6 @@ def jeu_gui(x: int, y: int, lab, joueur):
     # pygame.display.set_icon(icon)
 
     # game_font = pygame.font.Font()
-    taille_carre = 10
     rouge = (255, 0, 0)
     vert = (0, 255, 0)
     noir = (0, 0, 0)
@@ -48,7 +47,6 @@ def jeu_gui(x: int, y: int, lab, joueur):
 
 
         pygame.display.update()
-        keys = pygame.key.get_pressed()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:

@@ -13,7 +13,7 @@ class Labyrinthe:
 
     @property
     def creation_lab(self):
-
+        
         murEntier = self.mur * self.taille
         ligneVide = self.mur + self.vide * (self.taille - 2) + self.mur
         lab_visible = []
