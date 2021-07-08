@@ -24,7 +24,7 @@ def bordsLab(bords, taille):
 def rng_lab(labyrinthe):
     """
     Cette fonction crée un labyrinthe random pour après inscrire les informations dans une instance de classe
-    :param labyrinthe: instance de classe de Labyrinthe dans laquelle sera stocké le labyrinthe,départ et arrivée
+    :param labyrinthe: instance de classe de Labyrinthe dans laquelle sera stocké le labyrinthe, départ et arrivée
     :return: rien
     """
     taille = labyrinthe.taille

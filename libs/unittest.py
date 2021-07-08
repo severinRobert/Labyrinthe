@@ -1,10 +1,7 @@
 import unittest
 
+class PersoTestCase(unittest.TestCase):
 
-class LabyTestCase(unittest.TestCase):
-
-
-class FracTestCase(unittest.TestCase):
     def test_init(self):
         """Test du __init__"""
         self.assertRaises(ZeroDivisionError, Fraction, 1, 0)

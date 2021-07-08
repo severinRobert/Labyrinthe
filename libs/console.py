@@ -2,6 +2,12 @@ from libs.labyrinthe import Labyrinthe
 
 
 def jeu_console(joueur, lab):
+    """
+    Cette fonction gère la boucle de gameplay en console
+    :param joueur: instance de classe de Personnage qui permet le déplacement du joueur
+    :param lab: instance de classe de Labyrinthe dans laquelle sera stocké le labyrinthe, départ et arrivée
+    :return: rien
+    """
     continuer = True
     coord = list(lab.depart)
     lab_visible = Labyrinthe.creation_lab.__get__(lab)
