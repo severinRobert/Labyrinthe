@@ -1,7 +1,7 @@
-from rang import *
+from libs.personnage import Personnage
 import unittest
 
-class FracTestCase(unittest.TestCase):
+class PersoTestCase(unittest.TestCase):
     def test_init(self):
         """Test du __init__"""
         self.assertRaises(ZeroDivisionError, Fraction, 1, 0)

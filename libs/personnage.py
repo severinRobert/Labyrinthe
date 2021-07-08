@@ -1,10 +1,17 @@
 from time import sleep
 
+
 class Personnage:
 
-
-
     def deplacement(self, lab, direction, coord, lab_visible):
+        """
+        Cette fonction permet de déplacer le joueur et le tue en cas de rencontre avec un mur
+        :param lab: instance de classe de Labyrinthe dans laquelle sera stocké le labyrinthe, départ et arrivée
+        :param direction: caractère envoyé par le joueur indiquant la direction de déplacement
+        :param coord: liste [x,y] représentant les coordonnées du joueur
+        :param lab_visible: liste de string
+        :return coord: la variable coord avec les nouvelle coordonnées du joueur
+        """
         gauche = "q"
         droite = "d"
         haut = "z"

@@ -2,12 +2,20 @@ import pygame, sys, math
 from libs.rang import rng_lab
 from libs.labyrinthe import Labyrinthe
 
-
+"""
 def jeu(lab, lab_visible, coord, joueur):
+    ""
+    Cette fonction gère l'affichage
+    :param lab: instance de classe de Labyrinthe dans laquelle sera stocké le labyrinthe, départ et arrivée
+    :param lab_visible: liste représentant le labyrinthe visible par le joueur
+    :param coord: liste [x,y] représentant les coordonnées du joueur
+    :param joueur: instance de classe de Personnage qui permet le déplacement du joueur
+    :return: rien
+    ""
     # place le joueur aux coordonnées actuelles
     lab_visible[coord[0]] = lab.remplacer(lab_visible[coord[0]], coord[1], lab.personnage)
     lab.affichage(lab_visible)  # on affiche le labyrinthe
-    ancienneC = list(coord)  # on stock l'ancienne coordonnée
+    ancienne_coord = list(coord)  # on stock l'ancienne coordonnée
     direction = input("direction : ")  # choix de la direction
     # on change les nouvelles coordonnées du joueur et on vérifie les cas exceptionnels
     coord = joueur.deplacement(lab, direction, coord, lab_visible)
@@ -15,15 +23,24 @@ def jeu(lab, lab_visible, coord, joueur):
         print("VOUS AVEZ GAGNÉ !!")
         continuer = False
     # supprime le "x" de l'ancienne position du joueur
-    lab_visible[ancienneC[0]] = lab.remplacer(lab_visible[ancienneC[0]], ancienneC[1], lab.vide)
+    lab_visible[ancienne_coord[0]] = lab.remplacer(lab_visible[ancienne_coord[0]], ancienne_coord[1], lab.vide)
+"""
 
-
-def jeu_gui(x: int, y: int, lab, joueur):
+def jeu_gui(largeur_fenetre: int, hauteur_fenetre: int, lab, joueur):
+    """
+    Cette fonction gère l'affichage graphique  du jeu en initialisant pygame et ouvrant la boucle de gameplay et gère
+    aussi les input du joueur
+    :param largeur_fenetre: largeur de la fenêtre de jeu
+    :param hauteur_fenetre: hauteur de la fenêtre de jeu
+    :param lab: instance de classe de Labyrinthe dans laquelle sera stocké le labyrinthe, départ et arrivée
+    :param joueur: instance de classe de Personnage qui permet le déplacement du joueur
+    :return: rien
+    """
     # initialisation
     pygame.init()
-    screen = pygame.display.set_mode((x, y))
+    screen = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre))
     clock = pygame.time.Clock()
-    carre = math.floor(y/len(lab.lab))
+    carre = math.floor(hauteur_fenetre/len(lab.lab))
 
     # titre et icon
     pygame.display.set_caption("Labyrinthe")
