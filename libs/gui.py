@@ -45,7 +45,6 @@ def jeu_gui(x: int, y: int, lab, joueur):
                     pygame.draw.rect(screen, noir, (carre * j, carre * i, carre, carre))
         pygame.draw.rect(screen, vert, (carre * coord[1], carre * coord[0], carre, carre))
 
-
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.KEYDOWN:

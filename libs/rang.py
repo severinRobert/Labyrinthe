@@ -1,7 +1,13 @@
 import random as r
 
 
-def bordsLab(bords,taille):
+def bordsLab(bords, taille):
+    """
+    Cette fonction crée une liste contenant les bords du labyrinthe en retirant les quatres coins
+    :param bords: liste contenant les bords
+    :param taille: taille du labyrinthe
+    :return: none
+    """
     for i in range(taille):
         if i == 0 or i == taille - 1:
             for j in range(taille):
@@ -14,6 +20,7 @@ def bordsLab(bords,taille):
     bords.remove([taille - 1, 0])
     bords.remove([taille - 1, taille - 1])
 
+
 def rng_lab(labyrinthe):
     """
     Cette fonction crée un labyrinthe random pour après inscrire les informations dans une instance de classe
@@ -23,9 +30,9 @@ def rng_lab(labyrinthe):
     taille = labyrinthe.taille
     lab = []
     bords = []
-    bordsLab(bords,taille)
+    bordsLab(bords, taille)
     sortie_interdite = [[0, 0], [0, 1], [0, taille - 1], [0, taille], [1, 0], [1, taille], [taille - 1, 0],
-                        [taille - 1, taille],[taille, 0], [taille, 1], [taille, taille - 1], [taille, taille]]
+                        [taille - 1, taille], [taille, 0], [taille, 1], [taille, taille - 1], [taille, taille]]
     for i in range(taille):
         lab.append("#" * taille)
 

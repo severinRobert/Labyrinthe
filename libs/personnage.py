@@ -1,8 +1,7 @@
 from time import sleep
 
+
 class Personnage:
-
-
 
     def deplacement(self, lab, direction, coord, lab_visible):
         gauche = "q"

@@ -1,8 +1,13 @@
 from os import system
+
 from libs.personnage import Personnage
+
 from libs.console import jeu_console
+
 from libs.gui import jeu_gui
+
 from libs.rang import rng_lab
+
 from libs.labyrinthe import Labyrinthe
 
 # test
@@ -35,9 +40,9 @@ else:
 
 type_gui = input("1. console / 2. GUI ?")
 if type_gui == "1" or type_gui == "console":
-    jeu_console(joueur,lab1)
+    jeu_console(joueur, lab1)
 else:
     print("GUI pas encore construit")
-    jeu_gui(800, 600,lab1,joueur)
+    jeu_gui(800, 600, lab1, joueur)
 
 system("pause")

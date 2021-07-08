@@ -1,5 +1,8 @@
-from rang import *
 import unittest
+
+
+class LabyTestCase(unittest.TestCase):
+
 
 class FracTestCase(unittest.TestCase):
     def test_init(self):
