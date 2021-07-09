@@ -1,4 +1,3 @@
-import sys
 from libs.personnage import Personnage
 from libs.console import jeu_console
 from libs.gui import jeu_gui
@@ -38,7 +37,7 @@ def menu_random():
             break
         except ValueError:
             print("Ceci n'est pas un nombre")
-        except:
+        finally:
             print(f"Une erreur s'est produite")
     # retour en arrière
     if taille == 0:
@@ -89,18 +88,24 @@ def menu_labyrinthe():
         arrivee = [4, 9]
         labyrinthe = Labyrinthe(lb, len(lb), depart, arrivee)
     elif choix_lab == "3":
-        lb = ["##########",
-              "#        #",
-              "# #####  #",
-              "# #   ####",
-              "# # #     ",
-              "# # ######",
-              "# #      #",
-              "# ###### #",
-              "#        #",
-              "##########"]
-        depart = [2, 8]
-        arrivee = [4, 9]
+        lb = ["####### #######",
+              "#   #         #",
+              "# ### ##### ###",
+              "#   #   #     #",
+              "### ######### #",
+              "#     #     # #",
+              "# ##### ### # #",
+              "# # #     #   #",
+              "# ### ####### #",
+              "#   #   #   # #",
+              "### ## ## ### #",
+              "# # #   #   # #",
+              "### # ### ### #",
+              "#         #   #",
+              "###############"
+              ]
+        depart = [1, 3]
+        arrivee = [0, 7]
         labyrinthe = Labyrinthe(lb, len(lb), depart, arrivee)
     menu_graphique(labyrinthe)
 
@@ -131,6 +136,7 @@ def fin(joueur, labyrinthe):
     """
     Affiche le message de fin avec le nombre de mort et propose de continuer à jouer ou de quitter le jeu
     :param joueur: instance de la classe Personnage qui permet d'afficher le nombre de mort
+    :param labyrinthe: instance de la classe labyrinthe qui permet de vérifier si le joueur a fini le labyrinthe
     :return: rien
     """
     if labyrinthe.reussi:
@@ -140,8 +146,6 @@ def fin(joueur, labyrinthe):
         choix_continuer = input("La valeur entrée est incorrecte, veuillez entrer '1' ou '2' : ")
     if choix_continuer == "1":
         menu()
-    elif choix_continuer == "2":
-        sys.exit
 
 
 if __name__ == "__main__":

@@ -30,7 +30,7 @@ lab_visible2 = Labyrinthe.creation_lab.__get__(lab2)
 
 class LabyTestCase(unittest.TestCase):
 
-    def test_type_renvoye(self):
+    def test_type_renvoye_creation_lab(self):
         """Vérification du type renvoyé"""
         self.assertIsInstance(lab_visible1, list)
         self.assertIsInstance(lab_visible1[1], str)
@@ -38,7 +38,6 @@ class LabyTestCase(unittest.TestCase):
         self.assertIsInstance(lab_visible2[1], str)
 
     def test_contenu(self):
-
         self.assertEqual(lab_visible2, ["#####",
                                         "#---#",
                                         "#---#",
@@ -56,19 +55,18 @@ class LabyTestCase(unittest.TestCase):
                                         "#--------#",
                                         "##########"])
 
-    def test_type_renvoye(self):
-
-        self.assertIsInstance(Labyrinthe.remplacer(self, "hello", 1, "a"), (str, int, str))
-        self.assertIsInstance(Labyrinthe.remplacer(self, "Ceci est un test unitaire", 20, "p"), (str, int, str))
-        self.assertIsInstance(Labyrinthe.remplacer(self, "#---#", 2, "x"), (str, int, str))
-        self.assertIsInstance(Labyrinthe.remplacer(self, "#---#", 0, "-"), (str, int, str))
+    def test_type_renvoye_remplacer(self):
+        self.assertIsInstance(lab1.remplacer("hello", 1, "a"), (str, int, str))
+        self.assertIsInstance(lab1.remplacer("Ceci est un test unitaire", 20, "p"), (str, int, str))
+        self.assertIsInstance(lab1.remplacer("#---#", 2, "x"), (str, int, str))
+        self.assertIsInstance(lab1.remplacer("#---#", 0, "-"), (str, int, str))
 
     def test_caractere_remplacer(self):
+        self.assertEqual(lab1.remplacer("hello", 1, "a"), "hallo")
+        self.assertEqual(lab1.remplacer("Ceci est un test unitaire", 20, "p"), "Ceci est un test unipaire")
+        self.assertEqual(lab1.remplacer("#---#", 2, "x"), "#-x-#")
+        self.assertEqual(lab1.remplacer("#---#", 0, "-"), "----#")
 
-        self.assertEqual(Labyrinthe.remplacer(self,"hello", 1, "a"), "hallo")
-        self.assertEqual(Labyrinthe.remplacer(self, "Ceci est un test unitaire", 20, "p"), "Ceci est un test unipaire")
-        self.assertEqual(Labyrinthe.remplacer(self, "#---#", 2, "x"), "#-x-#")
-        self.assertEqual(Labyrinthe.remplacer(self, "#---#", 0, "-"), "----#")
 
 class PersoTestCase(unittest.TestCase):
 

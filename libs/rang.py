@@ -1,7 +1,7 @@
 import random as r
 
 
-def bordsLab(bords, taille):
+def bords_lab(bords, taille):
     """
     Cette fonction crée une liste contenant les bords du labyrinthe en retirant les quatres coins
     :param bords: liste contenant les bords
@@ -27,10 +27,11 @@ def rng_lab(labyrinthe):
     :param labyrinthe: instance de classe de Labyrinthe dans laquelle sera stocké le labyrinthe, départ et arrivée
     :return: rien
     """
+    global depart
     taille = labyrinthe.taille
     lab = []
     bords = []
-    bordsLab(bords, taille)
+    bords_lab(bords, taille)
     sortie_interdite = [[0, 0], [0, 1], [0, taille - 1], [0, taille], [1, 0], [1, taille], [taille - 1, 0],
                         [taille - 1, taille], [taille, 0], [taille, 1], [taille, taille - 1], [taille, taille]]
     for i in range(taille):
@@ -39,19 +40,19 @@ def rng_lab(labyrinthe):
     choix_sortie = [bords[i] for i, bord in enumerate(bords) if (bords[i][0] % 2 == 1 or bords[i][1] % 2 == 1) and
                     bords[i] not in sortie_interdite]
     sortie = r.choice(choix_sortie)
-    pointRef = list(sortie)
+    point_ref = list(sortie)
     if sortie[0] == taille - 1:
-        pointRef[0] -= 1
+        point_ref[0] -= 1
     elif sortie[0] == 0:
-        pointRef[0] += 1
+        point_ref[0] += 1
     elif sortie[1] == taille - 1:
-        pointRef[1] -= 1
+        point_ref[1] -= 1
     elif sortie[1] == 0:
-        pointRef[1] += 1
+        point_ref[1] += 1
 
     premier_cul_de_sac = False
-    chemin = [sortie, pointRef]
-    point = list(pointRef)
+    chemin = [sortie, point_ref]
+    point = list(point_ref)
     nb_visite_max = ((taille - 1) / 2) ** 2
     # stocks les coordonnées par lesquelles on est passé
     visite = []
@@ -66,9 +67,9 @@ def rng_lab(labyrinthe):
                        if not i[0] in bords and not i[0] in visite and 0 < i[0][0] < taille - 1 and 0 < i[0][
                            1] < taille - 1]
         # si toute les cases sont déjà prises on regarde à la case précédente
-        if choix_suite == []:
+        if not choix_suite:
             stack.pop()
-            point = list(stack[-1])
+            point = stack[-1]
             depart = depart if premier_cul_de_sac else point
         # sinon on choisit un point au hazard dans les choix possible
         else:
@@ -80,11 +81,11 @@ def rng_lab(labyrinthe):
             point = list(nouveau_point[0])
     # on remplace toutes les coordonnées dans chemin par des espace
     for i in chemin:
-        if not i in bords or i == sortie:
+        if i not in bords or i == sortie:
             lab[i[0]] = labyrinthe.remplacer(lab[i[0]], i[1], " ")
     # on enregistre toutes les données du labyrinthe crée dans l'instance passée en paramètre
     labyrinthe.arrivee = sortie
     labyrinthe.lab = lab
     labyrinthe.depart = point
     print(sortie)
-    print(pointRef)
+    print(point_ref)

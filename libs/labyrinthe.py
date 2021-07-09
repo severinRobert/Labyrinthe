@@ -30,21 +30,21 @@ class Labyrinthe:
         lab_visible[self.arrivee[0]] = self.remplacer(lab_visible[self.arrivee[0]], self.arrivee[1], self.vide)
         return lab_visible
 
-    def remplacer(self, str, index, r):
+    def remplacer(self, chaine, index, r):
         """
         Cette fonction permet de remplacer les murs quand ils ont été touché, les faire apparraitre ou quand le joueur
         a bougé de place de remplacer la marque de l'emplacement prècedent
-        :param str: chaine de caractere dans laquelle on veut remplacer ledit caractere
+        :param chaine: chaine de caractere dans laquelle on veut remplacer ledit caractere
         :param index: index du caractere a remplacer
         :param r: caractere qui va remplacer
         :return: return le caractere changer à l'endroit voulue
         """
 
         if index < 0:  # ajout au début
-            return r + str
-        if index > len(str):  # ajout à la fin
-            return str + r
-        return str[:index] + r + str[index + 1:]
+            return r + chaine
+        if index > len(chaine):  # ajout à la fin
+            return chaine + r
+        return chaine[:index] + r + chaine[index + 1:]
 
     def affichage(self, lab):
         for ligne in lab:

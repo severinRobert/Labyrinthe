@@ -1,4 +1,6 @@
-import pygame, sys, math
+import math
+import pygame
+import sys
 from libs.labyrinthe import Labyrinthe
 
 
@@ -50,7 +52,7 @@ def jeu_gui(largeur_fenetre: int, hauteur_fenetre: int, lab, joueur):
                     coord = joueur.deplacement(lab, "z", coord, lab_visible)
                 elif event.key == pygame.K_DOWN:
                     coord = joueur.deplacement(lab, "s", coord, lab_visible)
-                elif event.key == 1073741922: # Quand on appuie sur 0
+                elif event.key == 1073741922:  # Quand on appuie sur 0
                     continuer = False
             elif event.type == pygame.QUIT:
                 pygame.quit()
