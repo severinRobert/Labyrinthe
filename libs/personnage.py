@@ -3,6 +3,9 @@ from time import sleep
 
 class Personnage:
 
+    def __init__(self, mort=0):
+        self.mort = mort
+
     def deplacement(self, lab, direction, coord, lab_visible):
         """
         Cette fonction permet de déplacer le joueur et le tue en cas de rencontre avec un mur
@@ -31,6 +34,7 @@ class Personnage:
         if lab.lab[coord[0]][coord[1]] == "#":  # SI ON RENCONTRE UN MUR
             lab_visible[coord[0]] = lab.remplacer(lab_visible[coord[0]], coord[1], lab.mur)
             coord = list(lab.depart)
+            self.mort += 1
             print("VOUS ÊTES MORT, RETOUR AU POINT DE DÉPART")
             sleep(0.5)
         elif coord == list(lab.arrivee):

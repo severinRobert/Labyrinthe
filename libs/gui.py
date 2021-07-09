@@ -1,6 +1,7 @@
 import pygame, sys, math
 from libs.labyrinthe import Labyrinthe
 
+
 def jeu_gui(largeur_fenetre: int, hauteur_fenetre: int, lab, joueur):
     """
     Cette fonction gère l'affichage graphique  du jeu en initialisant pygame et ouvrant la boucle de gameplay et gère
@@ -15,7 +16,7 @@ def jeu_gui(largeur_fenetre: int, hauteur_fenetre: int, lab, joueur):
     pygame.init()
     screen = pygame.display.set_mode((largeur_fenetre, hauteur_fenetre))
     clock = pygame.time.Clock()
-    carre = math.floor(hauteur_fenetre/len(lab.lab))
+    carre = math.floor(hauteur_fenetre / len(lab.lab))
 
     # titre et icon
     pygame.display.set_caption("Labyrinthe")
@@ -28,12 +29,12 @@ def jeu_gui(largeur_fenetre: int, hauteur_fenetre: int, lab, joueur):
     noir = (0, 0, 0)
     coord = list(lab.depart)
     lab_visible = Labyrinthe.creation_lab.__get__(lab)
-    playing = True
-    while playing:
+    continuer = True
+    while continuer:
         for i in range(len(lab_visible)):
             for j in range(len(lab_visible[i])):
                 if lab_visible[i][j] == "#":
-                    pygame.draw.rect(screen, rouge, (carre*j, carre*i, carre, carre))
+                    pygame.draw.rect(screen, rouge, (carre * j, carre * i, carre, carre))
                 else:
                     pygame.draw.rect(screen, noir, (carre * j, carre * i, carre, carre))
         pygame.draw.rect(screen, vert, (carre * coord[1], carre * coord[0], carre, carre))
@@ -49,10 +50,13 @@ def jeu_gui(largeur_fenetre: int, hauteur_fenetre: int, lab, joueur):
                     coord = joueur.deplacement(lab, "z", coord, lab_visible)
                 elif event.key == pygame.K_DOWN:
                     coord = joueur.deplacement(lab, "s", coord, lab_visible)
+                elif event.key == 1073741922: # Quand on appuie sur 0
+                    continuer = False
             elif event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
         if coord == "fin":
-            playing = False
+            lab.reussi = True
+            continuer = False
         clock.tick(30)
     pygame.quit()
