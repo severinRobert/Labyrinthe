@@ -1,16 +1,15 @@
-
 class Labyrinthe:
 
-    def __init__(self, lab, taille, depart, arrivee, personnage="x", mur="#", vide="-", mort=0, random=False):
+    def __init__(self, lab, taille, depart, arrivee, personnage="x", mur="#", vide="-", random=False, reussi=False):
         self.lab = lab
         self.taille = taille
         self.personnage = personnage
         self.mur = mur
         self.vide = vide
-        self.mort = mort
         self.depart = depart
         self.arrivee = arrivee
         self.random = random
+        self.reussi = reussi
 
     @property
     def creation_lab(self):
@@ -24,7 +23,7 @@ class Labyrinthe:
         ligne_vide = self.mur + self.vide * (self.taille - 2) + self.mur
         lab_visible = []
         for i in range(self.taille):
-            if i == 0 or i == self.taille-1:
+            if i == 0 or i == self.taille - 1:
                 lab_visible.append(mur_entier)
             else:
                 lab_visible.append(ligne_vide)

@@ -60,10 +60,11 @@ def rng_lab(labyrinthe):
     while len(visite) != nb_visite_max:
         # on regarde si dans les cases à 2 pas sont libre donc si il n'y a pas un mur ou déjà un chemin
         choix_suite = [i for i in [[[point[0], point[1] + 2], [point[0], point[1] + 1]],
-                                    [[point[0], point[1] - 2], [point[0], point[1] - 1]],
-                                    [[point[0] + 2, point[1]], [point[0] + 1, point[1]]],
-                                    [[point[0] - 2, point[1]], [point[0] + 1, point[1]]]]
-                        if not i[0] in bords and not i[0] in visite and 0 < i[0][0] < taille - 1 and 0 < i[0][1] < taille-1]
+                                   [[point[0], point[1] - 2], [point[0], point[1] - 1]],
+                                   [[point[0] + 2, point[1]], [point[0] + 1, point[1]]],
+                                   [[point[0] - 2, point[1]], [point[0] + 1, point[1]]]]
+                       if not i[0] in bords and not i[0] in visite and 0 < i[0][0] < taille - 1 and 0 < i[0][
+                           1] < taille - 1]
         # si toute les cases sont déjà prises on regarde à la case précédente
         if choix_suite == []:
             stack.pop()
