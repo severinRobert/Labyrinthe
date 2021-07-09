@@ -1,7 +1,7 @@
 
 class Labyrinthe:
 
-    def __init__(self, lab, taille, depart, arrivee, personnage="x", mur="#", vide="-", mort=0):
+    def __init__(self, lab, taille, depart, arrivee, personnage="x", mur="#", vide="-", mort=0, random=False):
         self.lab = lab
         self.taille = taille
         self.personnage = personnage
@@ -10,6 +10,7 @@ class Labyrinthe:
         self.mort = mort
         self.depart = depart
         self.arrivee = arrivee
+        self.random = random
 
     @property
     def creation_lab(self):

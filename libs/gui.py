@@ -1,30 +1,5 @@
 import pygame, sys, math
-from libs.rang import rng_lab
 from libs.labyrinthe import Labyrinthe
-
-"""
-def jeu(lab, lab_visible, coord, joueur):
-    ""
-    Cette fonction gère l'affichage
-    :param lab: instance de classe de Labyrinthe dans laquelle sera stocké le labyrinthe, départ et arrivée
-    :param lab_visible: liste représentant le labyrinthe visible par le joueur
-    :param coord: liste [x,y] représentant les coordonnées du joueur
-    :param joueur: instance de classe de Personnage qui permet le déplacement du joueur
-    :return: rien
-    ""
-    # place le joueur aux coordonnées actuelles
-    lab_visible[coord[0]] = lab.remplacer(lab_visible[coord[0]], coord[1], lab.personnage)
-    lab.affichage(lab_visible)  # on affiche le labyrinthe
-    ancienne_coord = list(coord)  # on stock l'ancienne coordonnée
-    direction = input("direction : ")  # choix de la direction
-    # on change les nouvelles coordonnées du joueur et on vérifie les cas exceptionnels
-    coord = joueur.deplacement(lab, direction, coord, lab_visible)
-    if coord == lab.arrivee:
-        print("VOUS AVEZ GAGNÉ !!")
-        continuer = False
-    # supprime le "x" de l'ancienne position du joueur
-    lab_visible[ancienne_coord[0]] = lab.remplacer(lab_visible[ancienne_coord[0]], ancienne_coord[1], lab.vide)
-"""
 
 def jeu_gui(largeur_fenetre: int, hauteur_fenetre: int, lab, joueur):
     """
@@ -53,7 +28,8 @@ def jeu_gui(largeur_fenetre: int, hauteur_fenetre: int, lab, joueur):
     noir = (0, 0, 0)
     coord = list(lab.depart)
     lab_visible = Labyrinthe.creation_lab.__get__(lab)
-    while True:
+    playing = True
+    while playing:
         for i in range(len(lab_visible)):
             for j in range(len(lab_visible[i])):
                 if lab_visible[i][j] == "#":
@@ -76,4 +52,7 @@ def jeu_gui(largeur_fenetre: int, hauteur_fenetre: int, lab, joueur):
             elif event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+        if coord == "fin":
+            playing = False
         clock.tick(30)
+    pygame.quit()

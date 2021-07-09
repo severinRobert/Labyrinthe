@@ -33,4 +33,6 @@ class Personnage:
             coord = list(lab.depart)
             print("VOUS ÊTES MORT, RETOUR AU POINT DE DÉPART")
             sleep(0.5)
+        elif coord == list(lab.arrivee):
+            return "fin"
         return coord
