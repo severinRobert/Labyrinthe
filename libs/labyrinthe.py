@@ -35,7 +35,7 @@ class Labyrinthe:
         """
         Cette fonction permet de remplacer les murs quand ils ont été touché, les faire apparraitre ou quand le joueur
         a bougé de place de remplacer la marque de l'emplacement prècedent
-        :param str: chaine de caractere dans laquelle on veut remplacer le dit caractere
+        :param str: chaine de caractere dans laquelle on veut remplacer ledit caractere
         :param index: index du caractere a remplacer
         :param r: caractere qui va remplacer
         :return: return le caractere changer à l'endroit voulue

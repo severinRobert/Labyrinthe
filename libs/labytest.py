@@ -27,6 +27,7 @@ arrivee = [3, 4]
 lab2 = Labyrinthe(lb, len(lb), depart, arrivee)
 lab_visible2 = Labyrinthe.creation_lab.__get__(lab2)
 
+
 class LabyTestCase(unittest.TestCase):
 
     def test_type_renvoye(self):
@@ -43,6 +44,31 @@ class LabyTestCase(unittest.TestCase):
                                         "#---#",
                                         "#----",
                                         "#####"])
+
+        self.assertEqual(lab_visible1, ["##########",
+                                        "#--------#",
+                                        "#--------#",
+                                        "#--------#",
+                                        "#---------",
+                                        "#--------#",
+                                        "#--------#",
+                                        "#--------#",
+                                        "#--------#",
+                                        "##########"])
+
+    def test_type_renvoye(self):
+
+        self.assertIsInstance(Labyrinthe.remplacer(self, "hello", 1, "a"), (str, int, str))
+        self.assertIsInstance(Labyrinthe.remplacer(self, "Ceci est un test unitaire", 20, "p"), (str, int, str))
+        self.assertIsInstance(Labyrinthe.remplacer(self, "#---#", 2, "x"), (str, int, str))
+        self.assertIsInstance(Labyrinthe.remplacer(self, "#---#", 0, "-"), (str, int, str))
+
+    def test_caractere_remplacer(self):
+
+        self.assertEqual(Labyrinthe.remplacer(self,"hello", 1, "a"), "hallo")
+        self.assertEqual(Labyrinthe.remplacer(self, "Ceci est un test unitaire", 20, "p"), "Ceci est un test unipaire")
+        self.assertEqual(Labyrinthe.remplacer(self, "#---#", 2, "x"), "#-x-#")
+        self.assertEqual(Labyrinthe.remplacer(self, "#---#", 0, "-"), "----#")
 
 class PersoTestCase(unittest.TestCase):
 
