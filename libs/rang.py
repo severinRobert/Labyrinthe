@@ -87,5 +87,6 @@ def rng_lab(labyrinthe):
     labyrinthe.arrivee = sortie
     labyrinthe.lab = lab
     labyrinthe.depart = point
+    labyrinthe.random = True
     print(sortie)
     print(point_ref)
