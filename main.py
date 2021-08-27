@@ -29,16 +29,20 @@ def menu_random():
     Affiche le choix de taille du labyrinthe random puis redirige vers le menu graphique
     :return: rien
     """
-    taille = 0
-    while taille < 7 and taille % 2 == 0:
-        try:
-            taille = int(
-                input("Choisissez une taille impaire au dessus de 7 (0 pour revenir en arrière dans le menu) : "))
-            break
-        except ValueError:
-            print("Ceci n'est pas un nombre")
-        finally:
-            print(f"Une erreur s'est produite")
+    taille_mauvaise = True
+    while taille_mauvaise:
+        taille = input("Choisissez une taille impaire au dessus de 7 (0 pour revenir en arrière dans le menu) : ")
+        if not taille.isnumeric():
+            print(f"'{taille}' n'est pas un nombre")
+        elif int(taille) < 7 and int(taille) != 0:
+            print(f"'{taille}' est trop petit")
+        elif int(taille) %2 == 0 and int(taille) != 0:
+            print(f"'{taille}' n'est pas impair")
+        else:
+            taille_mauvaise = False
+            taille = int(taille)
+
+
     # retour en arrière
     if taille == 0:
         menu()
